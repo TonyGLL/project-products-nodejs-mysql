@@ -1,0 +1,52 @@
+<%- include('partials/header') %>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-8 mx-auto">
+            <% if(data.length > 0) { %>
+            <h5 class="text-center">Search by name "<%= name %>"</h5>
+            <table class="table table-bordered table-hover">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th>N°</th>
+                        <th>NAME</th>
+                        <th>UNIT</th>
+                        <th>PRICE</th>
+                        <th>STOCK</th>
+                        <th>TOTAL</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (data) { %>
+                    <% for(var i = 0; i < data.length; i++) { %>
+                    <tr">
+                        <td><%= (i + 1) %></td>
+                        <td><%= data[i].name %></td>
+                        <td><%= data[i].unitName %></td>
+                        <td><%= data[i].price %></td>
+                        <td><%= data[i].stock %></td>
+                        <td><%= data[i].total_product %></td>
+                        <td>
+                            <% if (data[i].stock <= 0) { %>
+                            <a href="/update/<%= data[i].id %>" class="btn btn-success btn-block">Edit</a>
+                            <a href="/delete/<%= data[i].id %>" class="btn btn-danger btn-block">Delete</a>
+                            <% }else { %>
+                            <a href="/update/<%= data[i].id %>" class="btn btn-success btn-block">Edit</a>
+                            <% } %>
+                        </td>
+                        </tr>
+                        <% } %>
+                        <% } %>
+                </tbody>
+            </table>
+            <% }else { %>
+            <div class="mt-5">
+                <h5 class="text-center">Search ""</h5>
+            </div>
+            <% }%>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

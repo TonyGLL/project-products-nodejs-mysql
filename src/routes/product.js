@@ -10,5 +10,6 @@ router.post('/add', productController.save);
 router.get('/delete/:id', productController.delete);
 router.get('/update/:id', productController.edit);
 router.post('/update/:id', productController.update);
+router.post('/search', productController.search);
 
 module.exports = router;

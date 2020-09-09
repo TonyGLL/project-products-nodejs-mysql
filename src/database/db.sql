@@ -6,12 +6,13 @@ CREATE TABLE products(
     name            VARCHAR(50) NOT NULL,
     price           FLOAT NOT NULL,
     stock           DOUBLE NOT NULL,
+    total_product   FLOAT NOT NULL,
 
     CONSTRAINT pk_products PRIMARY KEY(id),
     CONSTRAINT fk_product_unit FOREIGN KEY(unit_id) REFERENCES units(id)
 )ENGINE=INNODB;
 
-INSERT INTO products VALUES(NULL, 1, "Cemento", 50.00, 100);
+INSERT INTO products VALUES(NULL, 1, "Cemento", 50.00, 100, 5000.00);
 
 
 
