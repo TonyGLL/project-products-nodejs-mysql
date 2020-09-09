@@ -33,6 +33,46 @@ controller.save = (req, res) => {
     })
 }
 
+controller.edit = (req, res) => {
+    const { id } = req.params;
+
+    req.getConnection((err, conn) => {
+        conn.query('SELECT * FROM products WHERE id = ?', [id], (err, product) => {
+            if (err) {
+                if (err) {
+                    res.status(500).json({
+                        ok: false,
+                        err
+                    });
+                }
+            }
+            res.render('product_edit', {
+                data: product[0]
+            });
+        });
+    })
+}
+
+controller.update = (req, res) => {
+    const { id } = req.params;
+
+    const newProduct = req.body;
+
+    req.getConnection((err, conn) => {
+        conn.query('UPDATE products set ? WHERE id = ?', [newProduct, id], (err, product) => {
+            if (err) {
+                if (err) {
+                    res.status(500).json({
+                        ok: false,
+                        err
+                    });
+                }
+            }
+            res.redirect('/');
+        });
+    })
+}
+
 controller.delete = (req, res) => {
     const { id } = req.params;
 

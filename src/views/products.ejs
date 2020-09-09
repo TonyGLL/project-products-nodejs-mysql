@@ -65,10 +65,10 @@
                         <td><%= data[i].stock %></td>
                         <td>
                             <% if (data[i].stock <= 0) { %>
-                            <a href="/edit" class="btn btn-success btn-block">Edit</a>
+                            <a href="/update/<%= data[i].id %>" class="btn btn-success btn-block">Edit</a>
                             <a href="/delete/<%= data[i].id %>" class="btn btn-danger btn-block">Delete</a>
                             <% }else { %>
-                            <a href="/edit" class="btn btn-success btn-block">Edit</a>
+                            <a href="/update/<%= data[i].id %>" class="btn btn-success btn-block">Edit</a>
                             <% } %>
                         </td>
                         </tr>

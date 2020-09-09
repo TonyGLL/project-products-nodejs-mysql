@@ -1,0 +1,48 @@
+<%- include('partials/header') %>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-5 mx-auto">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h4>Edit Product</h4>
+                </div>
+                <div class="card-body">
+                    <form action="/update/<%= data.id %>" method="POST">
+                        <div class="form-group">
+                            <label for="name">NAME:</label>
+                            <input type="text" name="name" value="<%= data.name %>" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="unit_id">UNIT:</label>
+                            <select class="form-control" name="unit_id">
+                                <option value="1">KG</option>
+                                <option value="2">LT</option>
+                                <option value="3">Mts</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="price">PRICE:</label>
+                            <input type="number" min="0" step="any" value="<%= data.price %>" name="price"
+                                class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="stock">STOCK:</label>
+                            <input type="number" min="0" step="any" value="<%= data.stock %>" name="stock"
+                                class="form-control">
+                        </div>
+
+                        <p class="text-right">Total: 50.00</p>
+
+                        <button type="submit" class="btn btn-primary btn-block">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
