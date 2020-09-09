@@ -33,6 +33,10 @@ cd project-products-nodejs-mysql
 ```
 
 ```
+npm install
+```
+
+```
 npm run dev or npm run start
 ```
 
