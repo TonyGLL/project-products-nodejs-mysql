@@ -17,6 +17,7 @@
     ▶️ MySQL
     ▶️ NPM
     ▶️ EJS Templates
+    ▶️ VSCode
 
 **Screenshot**
 ![screen](screen.png)
