@@ -1,0 +1,83 @@
+<%- include('partials/header') %>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-5">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h4>Create Product</h4>
+                </div>
+                <div class="card-body">
+                    <form action="/add" method="POST">
+                        <div class="form-group">
+                            <label for="name">NAME:</label>
+                            <input type="text" name="name" placeholder="ej. Cemento" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="unit_id">UNIT:</label>
+                            <select class="form-control" name="unit_id">
+                                <option value="1">KG</option>
+                                <option value="2">LT</option>
+                                <option value="3">Mts</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="price">PRICE:</label>
+                            <input type="number" min="0" step="any" name="price" placeholder="0.00"
+                                class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="stock">STOCK:</label>
+                            <input type="number" min="0" step="any" name="stock" placeholder="50 u"
+                                class="form-control">
+                        </div>
+
+                        <p class="text-right">Total: 50.00</p>
+
+                        <button type="submit" class="btn btn-primary btn-block">Create</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-7">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>NAME</th>
+                        <th>UNIT</th>
+                        <th>PRICE</th>
+                        <th>STOCK</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (data) { %>
+                    <% for(var i = 0; i < data.length; i++) { %>
+                    <tr">
+                        <td><%= (i + 1) %></td>
+                        <td><%= data[i].name %></td>
+                        <td><%= data[i].unitName %></td>
+                        <td><%= data[i].price %></td>
+                        <td><%= data[i].stock %></td>
+                        <td>
+                            <% if (data[i].stock <= 0) { %>
+                            <a href="/edit" class="btn btn-success btn-block">Edit</a>
+                            <a href="/delete/<%= data[i].id %>" class="btn btn-danger btn-block">Delete</a>
+                            <% }else { %>
+                            <a href="/edit" class="btn btn-success btn-block">Edit</a>
+                            <% } %>
+                        </td>
+                        </tr>
+                        <% } %>
+                        <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
